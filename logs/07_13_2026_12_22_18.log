@@ -1,0 +1,35 @@
+[ 2026-07-13 12:22:20,792 ] 12 root - INFO - Starting the training pipeline...
+[ 2026-07-13 12:22:20,792 ] 21 root - INFO - Entered the Data Ingestion mehtod or components
+[ 2026-07-13 12:22:20,805 ] 27 root - INFO - Read the datasets as DataFrames
+[ 2026-07-13 12:22:20,824 ] 32 root - INFO - Train test split initiated
+[ 2026-07-13 12:22:20,844 ] 38 root - INFO - Ingestion of the data is completed
+[ 2026-07-13 12:22:20,845 ] 16 root - INFO - Data ingestion completed. Train data path: artifacts\train.csv, Test data path: artifacts\test.csv
+[ 2026-07-13 12:22:20,845 ] 18 root - INFO - Starting data transformation...
+[ 2026-07-13 12:22:20,892 ] 101 root - INFO - Read train and test data completed
+[ 2026-07-13 12:22:20,897 ] 109 root - INFO - Rows before dropping target NaNs - Train: 4608, Test: 1153
+[ 2026-07-13 12:22:20,899 ] 114 root - INFO - Rows after dropping target NaNs - Train: 3079, Test: 747
+[ 2026-07-13 12:22:20,899 ] 26 root - INFO - Applying Regex cleaning logic on Memory and Storage features.
+[ 2026-07-13 12:22:20,917 ] 47 root - INFO - Filtering valid ranges and removing unauthentic data rows.
+[ 2026-07-13 12:22:20,923 ] 26 root - INFO - Applying Regex cleaning logic on Memory and Storage features.
+[ 2026-07-13 12:22:20,988 ] 47 root - INFO - Filtering valid ranges and removing unauthentic data rows.
+[ 2026-07-13 12:22:20,989 ] 122 root - INFO - Cleaning and Filtering outliers completed
+[ 2026-07-13 12:22:20,990 ] 124 root - INFO - obtaining preprocessing object
+[ 2026-07-13 12:22:20,990 ] 82 root - INFO - categorical columns:['Brand', 'Model', 'Color']
+[ 2026-07-13 12:22:20,990 ] 83 root - INFO - numerical columns:['Memory_Cleaned', 'Storage_Cleaned', 'Rating', 'Original Price']
+[ 2026-07-13 12:22:20,991 ] 134 root - INFO - Applying preprocessing object on training and testing dataframes.
+[ 2026-07-13 12:22:21,052 ] 147 root - INFO - Saving preprocessing object.
+[ 2026-07-13 12:22:21,058 ] 24 root - INFO - Data transformation completed. Preprocessor path: artifacts\preprocessor.pkl
+[ 2026-07-13 12:22:21,058 ] 26 root - INFO - Starting model training...
+[ 2026-07-13 12:22:21,059 ] 30 root - INFO - splitting train and test input data
+[ 2026-07-13 12:22:21,060 ] 31 root - INFO - Tuning hyperparameters for: Linear Regression
+[ 2026-07-13 12:22:28,136 ] 31 root - INFO - Tuning hyperparameters for: Lasso
+[ 2026-07-13 12:22:32,368 ] 31 root - INFO - Tuning hyperparameters for: Ridge
+[ 2026-07-13 12:22:34,083 ] 31 root - INFO - Tuning hyperparameters for: K-Neighbors Regressor
+[ 2026-07-13 12:22:40,976 ] 31 root - INFO - Tuning hyperparameters for: Decision Tree
+[ 2026-07-13 12:22:41,636 ] 31 root - INFO - Tuning hyperparameters for: Random Forest Regressor
+[ 2026-07-13 12:23:01,349 ] 31 root - INFO - Tuning hyperparameters for: XGBRegressor
+[ 2026-07-13 12:23:57,052 ] 31 root - INFO - Tuning hyperparameters for: CatBoosting Regressor
+[ 2026-07-13 12:25:01,000 ] 31 root - INFO - Tuning hyperparameters for: AdaBoost Regressor
+[ 2026-07-13 12:30:55,704 ] 118 root - INFO - Best model found: XGBRegressor with R2 score of 0.9921818355133775
+[ 2026-07-13 12:30:55,760 ] 123 root - INFO - Best model saved
+[ 2026-07-13 12:30:55,880 ] 30 root - INFO - Model training completed. Model R2 Score: 0.9921818355133775

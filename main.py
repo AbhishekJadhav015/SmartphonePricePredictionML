@@ -8,8 +8,6 @@ from src.exception import CustomException
 
 def start_training_pipeline():
     try:
-        mlflow.set_tracking_uri("http://127.0.0.1:5000")
-        mlflow.set_experiment("Smartphone_Price_Prediction")
         
         logging.info("Starting the training pipeline...")
         print("--- Step 1: Initiating Data Ingestion ---")
