@@ -19,7 +19,7 @@ def get_requirements(file_path:str)-> List[str]:
     
     
 setup(
-    name="ML_PROJECT_WITH_MLFLOW",
+    name="ML_PROJECT",
     version ="0.0.1" ,
     author ="Abhishek" ,
     author_email = "abhishekjadhav0015@gmail.com" ,
