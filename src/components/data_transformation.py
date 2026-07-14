@@ -58,12 +58,14 @@ class DataTransformation:
         
         # Drop original raw uncleaned source columns
         df = df.drop(columns=["Memory", "Storage"], errors='ignore')
+        df.rename(columns={'Original Price': 'Original_Price', 'Storage_Cleaned': 'Storage', 'Memory_Cleaned': 'Memory'}, inplace=True)
+        
         return df
     
     def get_data_transformer_obj(self):
         
         try:
-            numerical_columns =['Memory_Cleaned','Storage_Cleaned','Rating','Original Price']
+            numerical_columns =['Memory','Storage','Rating','Original_Price']
             categorical_columns = ['Brand', 'Model', 'Color']
                     
             num_pipline = Pipeline(

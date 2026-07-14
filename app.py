@@ -152,22 +152,22 @@ st.write("Enter the details below to predict smartphones selling price.")
 st.subheader("Smartphone Context Details")
 
 # 1. FIX: Keep dependent selectors OUTSIDE the form so they refresh instantly
-brand = st.selectbox(
+Brand = st.selectbox(
     label="Select Brand",
     options=list(brand_model_mapping.keys())
 )
 
-available_models = brand_model_mapping[brand]
+available_models = brand_model_mapping[Brand]
 
-model = st.selectbox(
-    label=f"Select {brand} Model",
+Model = st.selectbox(
+    label=f"Select {Brand} Model",
     options=available_models
 )
 
 # 2. Start the form for remaining inputs that don't depend on each other
 with st.form("prediction_form"):
 
-    color = st.selectbox("color",
+    Color = st.selectbox("color",
         options=['Black','White/Cream', 'Blue', 'Silver', 'Green', 'Purple', 'Gold', 'Aurora',
             'White', 'Orange', 'Red', 'Starry Night', 'Grey', 'Pink', 'Brown', 'Ice',
             'Black & Blue', 'Black & Gold', 'Illusion Sky', 'Yellow', 'Nebula',
@@ -186,16 +186,16 @@ with st.form("prediction_form"):
             'Starry Glow'],
     )
     
-    rating = st.slider("rating", 
+    Rating = st.slider("rating", 
                         min_value=0.0, max_value=5.0, step=0.1
     )
     
-    storage = st.selectbox("Storage",
+    Storage = st.selectbox("Storage",
         options=[64, 128, 32, 256, 16, 8, 4, 512, 10, 100, 129, 130],
     )
 
     # 3. FIX: Changed from st.number_input to st.selectbox since you provided a discrete list
-    memory = st.selectbox(
+    Memory = st.selectbox(
         "memory", options=[4, 6, 3, 8, 2, 12, 1, 1.5, 16, 18, 64, 32, 46, 0.5, 30]
     )
     
@@ -210,12 +210,12 @@ with st.form("prediction_form"):
 if submit_button:
     # Form submission can safely pull 'brand' and 'model' from outside widgets
     data = CustomData(
-        Brand = brand,
-        Model = model,
-        Color = color,
-        Rating = rating,
-        Storage = float(storage),
-        Memory = float(memory),
+        Brand = Brand,
+        Model = Model,
+        Color = Color,
+        Rating = Rating,
+        Storage = float(Storage),
+        Memory = float(Memory),
         Original_Price = float(Original_Price),
     )
 

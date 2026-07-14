@@ -25,24 +25,24 @@ class PredictPipeline:
         
 class CustomData:
     def __init__(self, Brand , Model , Color , Rating , Original_Price ,Memory , Storage ):
-        self.brand = Brand
-        self.model = Model
-        self.color = Color
-        self.rating = Rating
-        self.orginal_price = Original_Price
-        self.memory = Memory
-        self.storage = Storage
+        self.Brand = Brand
+        self.Model = Model
+        self.Color = Color
+        self.Rating = Rating
+        self.Original_Price = Original_Price
+        self.Memory = Memory
+        self.Storage = Storage
         
     def get_data_as_data_frame(self):
         try:
             custom_data_input_dict = {
-                "brand" :[self.brand],
-                "model" : [self.model],
-                "color" : [self.color],
-                "rating" : [self.rating],
-                "original_price" : [self.orginal_price],
-                "memory" : [self.memory],
-                "storage" : [self.storage]
+                "Brand" :[self.Brand],
+                "Model" : [self.Model],
+                "Color" : [self.Color],
+                "Rating" : [self.Rating],
+                "Original_Price" : [self.Original_Price],
+                "Memory" : [self.Memory],
+                "Storage" : [self.Storage]
                 
                 }
         
