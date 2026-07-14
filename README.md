@@ -9,9 +9,10 @@ end-to-end Machine Learning regression pipeline featuring automated modular data
 
 ### Option 1: Try the Live Web App (Recommended for Recruiters)
 You can test the model's predictions directly in your browser without installing anything.
-1. Visit the live Streamlit application: [Insert Link Here]
+1. Visit the live Streamlit application: [https://smartphonepricepredictionml-ncecx94yaw7vhs8dtauxop.streamlit.app/]
 2. Adjust the input parameters using the sidebar sliders/dropdowns.
 3. Click the "Predict" button to see the model's output in real-time.
+Note : please be patient the application is live on streamlit cloud thus it will take 15 sec or more to load
 
 ### Option 2: 💻 Local Setup (Using Python)
 Follow these steps to configure and run the project directly on your physical hardware.
