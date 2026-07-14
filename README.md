@@ -1,11 +1,11 @@
-## End-to-End Machine Learning Regression ProjectAn 
+## End-to-End Machine Learning Regression Project
 end-to-end Machine Learning regression pipeline featuring automated modular data ingestion, transformation, model training, and hyperparameter tuning across multiple algorithms (XGBoost, CatBoost, Random Forest, etc.) . The optimized production pipeline achieves a peak **R² Score of 0.992**. The application is fully containerised using Docker for seamless local deployment.
 ## 🚀 Features
-Modular Architecture: Clean separation of ingestion, transformation, and training scripts.
-Multi-Model Tuning: Automated hyperparameter grid search pipeline over 9 different regression algorithms.
-Hardware Agnostic: Automatic fallback configurations between CPU and GPU (cuda:0).
-Robust Logging: Centralised custom exception handling and logging modules for simple debugging.
-Dockerised Deployment: Fully containerised setup for deterministic execution on any machine.
+- Modular Architecture: Clean separation of ingestion, transformation, and training scripts.
+- Multi-Model Tuning: Automated hyperparameter grid search pipeline over 9 different regression algorithms.
+- Hardware Agnostic: Automatic fallback configurations between CPU and GPU (cuda:0).
+- Robust Logging: Centralised custom exception handling and logging modules for simple debugging.
+- Dockerised Deployment: Fully containerised setup for deterministic execution on any machine.
 
 ### Option 1: Try the Live Web App (Recommended for Recruiters)
 You can test the model's predictions directly in your browser without installing anything.
@@ -61,5 +61,3 @@ Execute the container and map the web port to view the interface locally:
 docker run --rm -p 8501:8501 abhishekjadhav0015/ml-pipeline-app:latest
 ```
 *Once running, navigate to `http://localhost:8501` in your browser.*
-
-```
