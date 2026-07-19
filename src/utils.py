@@ -8,6 +8,7 @@ from src.exception import CustomException
 from sklearn.metrics import r2_score
 from sklearn.model_selection import GridSearchCV
 
+# Utility functions for saving objects 
 def save_object(file_path , obj):
     try:
         dir_path = os.path.dirname(file_path)
@@ -20,6 +21,7 @@ def save_object(file_path , obj):
     except Exception as e :
         raise CustomException(e,sys)
     
+# Utility function for evaluating models
 def evaluate_model(X_train, y_train,X_test,y_test,models,param):
     try:
         model_report = {}
@@ -60,7 +62,7 @@ def evaluate_model(X_train, y_train,X_test,y_test,models,param):
     except Exception as e:
         raise CustomException(e, sys)
 
-    
+# Utility function for loading objects  
 def load_obj(file_path):
     try:
         with open(file_path,"rb") as file_obj:

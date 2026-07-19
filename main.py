@@ -11,10 +11,13 @@ def start_training_pipeline():
         
         logging.info("Starting the training pipeline...")
         print("--- Step 1: Initiating Data Ingestion ---")
+        
+        # Data Ingestion
         ingestion = DataIngestion()
         train_data_path, test_data_path = ingestion.initiate_data_ingestion()
         logging.info(f"Data ingestion completed. Train data path: {train_data_path}, Test data path: {test_data_path}")
         
+        # Data Transformation
         logging.info("Starting data transformation...")
         print("--- Step 2: Initiating Data Transformation ---")
         data_transformation = DataTransformation()
@@ -23,9 +26,12 @@ def start_training_pipeline():
         )
         logging.info(f"Data transformation completed. Preprocessor path: {preprocessor_path}")
         
+        # Model Training
         logging.info("Starting model training...")
         print("--- Step 3: Initiating Model Training ---")
         model_trainer = ModelTrainer()
+        
+        # score 
         model_score = model_trainer.initiate_model_trainer(train_arr, test_arr)
         logging.info(f"Model training completed. Model R2 Score: {model_score}")
         

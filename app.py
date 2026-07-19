@@ -151,7 +151,6 @@ st.write("Enter the details below to predict smartphones selling price.")
 
 st.subheader("Smartphone Context Details")
 
-# 1. FIX: Keep dependent selectors OUTSIDE the form so they refresh instantly
 Brand = st.selectbox(
     label="Select Brand",
     options=list(brand_model_mapping.keys())
@@ -164,7 +163,6 @@ Model = st.selectbox(
     options=available_models
 )
 
-# 2. Start the form for remaining inputs that don't depend on each other
 with st.form("prediction_form"):
 
     Color = st.selectbox("color",
@@ -193,8 +191,7 @@ with st.form("prediction_form"):
     Storage = st.selectbox("Storage",
         options=[64, 128, 32, 256, 16, 8, 4, 512, 10, 100, 129, 130],
     )
-
-    # 3. FIX: Changed from st.number_input to st.selectbox since you provided a discrete list
+    
     Memory = st.selectbox(
         "memory", options=[4, 6, 3, 8, 2, 12, 1, 1.5, 16, 18, 64, 32, 46, 0.5, 30]
     )

@@ -1,6 +1,7 @@
 from typing import List
 from setuptools import find_packages , setup
 
+#This function will return list of requirements
 def get_requirements(file_path:str)-> List[str]: 
     '''
     This function will return list of requirements
@@ -17,7 +18,7 @@ def get_requirements(file_path:str)-> List[str]:
     return requiremnets
     
     
-    
+#Basic Setup    
 setup(
     name="ML_PROJECT",
     version ="0.0.1" ,

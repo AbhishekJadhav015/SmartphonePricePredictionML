@@ -13,10 +13,12 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder,StandardScaler
 
+# Configuration class for data transformation
 @dataclass
 class DataTransformationConfig:
     preprocessor_obj_file_path = os.path.join("artifacts","preprocessor.pkl")
-    
+  
+# DataTransformation class for data cleaning and preprocessing  
 class DataTransformation:
     def __init__(self):
         self.data_transformation_config = DataTransformationConfig()
@@ -61,7 +63,7 @@ class DataTransformation:
         df.rename(columns={'Original Price': 'Original_Price', 'Storage_Cleaned': 'Storage', 'Memory_Cleaned': 'Memory'}, inplace=True)
         
         return df
-    
+    # Method to get the data transformer object
     def get_data_transformer_obj(self):
         
         try:
@@ -94,47 +96,48 @@ class DataTransformation:
         
         except Exception as e:
             raise CustomException(e ,sys)
-        
+    
+    # Method to initiate data transformation    
     def initiate_data_transformation(self, train_path ,test_path):
             try:
+                # Read train and test data
                 train_df = pd.read_csv(train_path)
                 test_df = pd.read_csv(test_path)
                 
                 logging.info("Read train and test data completed")
                 
+                # Clean and preprocess the data
                 for col in ['Brand', 'Model', 'Color']:
                     if col in train_df.columns:
                         train_df[col] = train_df[col].astype(str).str.strip()
                     if col in test_df.columns:
                         test_df[col] = test_df[col].astype(str).str.strip()
-                
                 logging.info(f"Rows before dropping target NaNs - Train: {len(train_df)}, Test: {len(test_df)}")
-            
+                
+                # Drop rows with NaN values in the target column
                 train_df = train_df.dropna()
                 test_df = test_df.dropna()
-            
                 logging.info(f"Rows after dropping target NaNs - Train: {len(train_df)}, Test: {len(test_df)}")
-            
+               
+                # Clean and filter the data
                 train_df = self.clean_memory_storage_columns(train_df)
                 train_df = self.filter_outliers_and_ranges(train_df)
-
                 test_df = self.clean_memory_storage_columns(test_df)
                 test_df = self.filter_outliers_and_ranges(test_df)
-                
                 logging.info("Cleaning and Filtering outliers completed")
-            
+                
+                # Split features and target variable 
                 logging.info("obtaining preprocessing object")
                 preprocessing_obj = self.get_data_transformer_obj()
                 
-                
+                # Split input features and target variable for train and test datasets
                 input_feature_train_df = train_df.drop(columns=["Selling Price"])
                 target_feature_train_df = train_df[["Selling Price"]]
-
                 input_feature_test_df = test_df.drop(columns=["Selling Price"])
                 target_feature_test_df = test_df[["Selling Price"]]
                 
+                # Apply preprocessing object on training and testing dataframes
                 logging.info("Applying preprocessing object on training and testing dataframes.")
-                
                 input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
                 input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df)
                 

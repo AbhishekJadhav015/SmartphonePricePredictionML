@@ -17,10 +17,12 @@ from catboost import CatBoostRegressor
 import xgboost as xgb
 from sklearn.metrics import r2_score
 
+# Configuration class for model trainer
 @dataclass
 class ModelTrainerConfig:
     trained_model_file_path: str = os.path.join("artifacts", "model.pkl")
-    
+
+# ModelTrainer class for training and evaluating models    
 class ModelTrainer:
     def __init__(self):
         self.model_trainer_config = ModelTrainerConfig()
@@ -52,7 +54,7 @@ class ModelTrainer:
                 ),
                 "CatBoosting Regressor": CatBoostRegressor(
                     task_type=cat_task_type,
-                    verbose=False,allow_writing_files=False, # 🛠️ FIX: Stops CatBoost from creating conflicting local log folders
+                    verbose=False,allow_writing_files=False, 
                     train_dir='artifacts/catboost_info'
                 ),
                 "AdaBoost Regressor": AdaBoostRegressor()
@@ -105,7 +107,8 @@ class ModelTrainer:
                     'n_estimators': [50, 100, 200]
                 }
             }
-
+            # Evaluate models and get the best model
+            logging.info("Evaluating models")
             model_report, trained_models = evaluate_model(
                 X_train=x_train, X_test=x_test, y_train=y_train, y_test=y_test, models=models, param=param
             )
@@ -113,7 +116,8 @@ class ModelTrainer:
             best_model_score = model_report[best_model_name]
             
             best_model = trained_models[best_model_name]
-           
+            
+            # Check if the best model score is below a certain threshold 
             if best_model_score < 0.6:
                 raise CustomException("NO best model found")
             logging.info(f"Best model found: {best_model_name} with R2 score of {best_model_score}")            
